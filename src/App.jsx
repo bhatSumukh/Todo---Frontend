@@ -15,7 +15,11 @@ function App(){
   },[]);
 
   function addTodo(){
-    fetch("https://todo-backend-nzdw.onrender.com/todos",{
+    if(task === ""){
+      alert("Add a task");
+    }
+    else{
+        fetch("https://todo-backend-nzdw.onrender.com/todos",{
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({task:task})
@@ -25,6 +29,7 @@ function App(){
       setTodos([...todos,newTodo]);
       setTask("");
     });
+    }
   }
 
   function deleteTodo(id){
