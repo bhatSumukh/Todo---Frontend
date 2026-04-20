@@ -5,7 +5,7 @@ function App(){
   const [task, setTask] = useState("");
 
   useEffect(function(){
-    fetch("https://todo-backend-nzdw.onrender.com")
+    fetch("https://todo-backend-nzdw.onrender.com/todos")
     .then(function(res){
       return res.json();
     })
@@ -15,7 +15,7 @@ function App(){
   },[]);
 
   function addTodo(){
-    fetch("https://todo-backend-nzdw.onrender.com",{
+    fetch("https://todo-backend-nzdw.onrender.com/todos",{
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({task:task})
@@ -28,7 +28,7 @@ function App(){
   }
 
   function deleteTodo(id){
-    fetch("https://todo-backend-nzdw.onrender.com" + id,{
+    fetch("https://todo-backend-nzdw.onrender.com/todos" + id,{
       method: "DELETE"
     })
     .then(function(){
